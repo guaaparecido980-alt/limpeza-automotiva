@@ -119,35 +119,36 @@
   --red-hover:#C70500;
   --red-glow:rgba(225,6,0,.4);
   --red-subtle:rgba(225,6,0,.08);
-  --red-border:rgba(225,6,0,.2);
+  --red-border:rgba(225,6,0,.25);
   --black:#000;
-  --black-rich:#050505;
-  --black-card:#0C0C0C;
-  --black-card-hover:#111;
+  --black-rich:#070707;
+  --black-card:#0E0E0E;
+  --black-card-hover:#141414;
   --white:#FFF;
-  --white-90:rgba(255,255,255,.9);
-  --white-70:rgba(255,255,255,.7);
-  --white-50:rgba(255,255,255,.5);
-  --white-20:rgba(255,255,255,.2);
+  --white-90:rgba(255,255,255,.92);
+  --white-70:rgba(255,255,255,.78);
+  --white-50:rgba(255,255,255,.58);
+  --white-20:rgba(255,255,255,.22);
   --white-10:rgba(255,255,255,.1);
-  --white-05:rgba(255,255,255,.05);
+  --white-05:rgba(255,255,255,.06);
   --gray:#9A9A9A;
   --font-display:'Oswald',sans-serif;
   --font-body:'Outfit',sans-serif;
   --font-alt:'DM Sans',sans-serif;
-  --max-w:1200px;
+  --max-w:1280px;
   --ease:cubic-bezier(.4,0,.2,1);
   --ease-out:cubic-bezier(0,0,.2,1);
   --ease-spring:cubic-bezier(.34,1.56,.64,1);
 }
-html{scroll-behavior:smooth;overflow-x:hidden;scroll-padding-top:80px}
+html{scroll-behavior:smooth;overflow-x:hidden;scroll-padding-top:120px}
 body{font-family:var(--font-body);background:var(--black);color:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
 img{max-width:100%;display:block;height:auto}
 a{text-decoration:none;color:inherit}
 ul{list-style:none}
 button{font-family:inherit}
-.container{max-width:var(--max-w);margin:0 auto;padding:0 20px}
-@media(min-width:768px){.container{padding:0 32px}}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 24px;width:100%}
+@media(min-width:768px){.container{padding:0 40px}}
+@media(min-width:1280px){.container{padding:0 48px}}
 
 /* Scrollbar */
 ::-webkit-scrollbar{width:6px}
@@ -191,14 +192,20 @@ button{font-family:inherit}
 /* ══════════════════════════════════════════════════════════
    HEADER
    ══════════════════════════════════════════════════════════ */
-.header{position:fixed;top:0;left:0;width:100%;z-index:1000;transition:all .4s var(--ease);padding:12px 0}
+.header{position:fixed;top:36px;left:0;width:100%;z-index:1000;transition:all .35s var(--ease);padding:14px 0;background:linear-gradient(180deg,rgba(0,0,0,.85),rgba(0,0,0,.55) 70%,transparent)}
+@media(max-width:640px){.header{top:30px}}
 .header::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--red-border),transparent);opacity:0;transition:opacity .4s}
-.header.scrolled{background:rgba(0,0,0,.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);padding:6px 0}
+.header.scrolled{background:rgba(0,0,0,.94);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);padding:10px 0}
 .header.scrolled::after{opacity:1}
-.header-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
-.header-logo{display:flex;align-items:center;flex-shrink:0}
-.header-logo img{height:56px;width:auto;transition:height .3s var(--ease)}
-.header.scrolled .header-logo img{height:44px}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.header-logo{display:flex;align-items:center;flex-shrink:0;line-height:0;gap:10px;text-decoration:none}
+.header-logo img{height:50px;width:auto;transition:height .3s var(--ease)}
+.header.scrolled .header-logo img{height:40px}
+.header-logo-text{display:none;flex-direction:column;line-height:1;font-family:var(--font-display);text-transform:uppercase}
+@media(min-width:480px){.header-logo-text{display:flex}}
+.header-logo-text strong{font-size:18px;font-weight:700;color:var(--white);letter-spacing:1.5px}
+.header-logo-text span{font-size:10px;font-weight:500;letter-spacing:3px;color:var(--red);margin-top:2px}
+.header.scrolled .header-logo-text strong{font-size:16px}
 
 .nav-desktop{display:none;align-items:center;gap:28px}
 @media(min-width:1024px){.nav-desktop{display:flex}}
@@ -233,14 +240,14 @@ button{font-family:inherit}
 /* ══════════════════════════════════════════════════════════
    HERO
    ══════════════════════════════════════════════════════════ */
-.hero{position:relative;min-height:100vh;min-height:100dvh;display:flex;align-items:center;overflow:hidden;padding:120px 0 80px}
+.hero{position:relative;min-height:100vh;min-height:100dvh;display:flex;align-items:center;overflow:hidden;padding:140px 0 80px}
 .hero-bg{position:absolute;inset:0;z-index:0}
 .hero-bg::before{content:'';position:absolute;inset:0;background:
-  radial-gradient(ellipse 80% 60% at 65% 45%, rgba(225,6,0,.06) 0%, transparent 70%),
+  radial-gradient(ellipse 70% 50% at 70% 50%, rgba(225,6,0,.10) 0%, transparent 70%),
   radial-gradient(ellipse 50% 50% at 20% 80%, rgba(225,6,0,.04) 0%, transparent 60%),
   linear-gradient(180deg, rgba(0,0,0,.3) 0%, var(--black) 100%);z-index:1}
 /* Diagonal line decoration */
-.hero-bg::after{content:'';position:absolute;top:0;right:15%;width:1px;height:100%;background:linear-gradient(180deg,transparent 10%,rgba(225,6,0,.15) 50%,transparent 90%);z-index:2;transform:skewX(-5deg)}
+.hero-bg::after{content:'';position:absolute;top:0;right:8%;width:1px;height:100%;background:linear-gradient(180deg,transparent 10%,rgba(225,6,0,.2) 50%,transparent 90%);z-index:2;transform:skewX(-5deg)}
 /* Grid texture */
 .hero-grid{position:absolute;inset:0;z-index:1;
   background-image:
@@ -251,19 +258,39 @@ button{font-family:inherit}
   -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 50%,black 20%,transparent 80%);
   opacity:.3}
 
-.hero-content{position:relative;z-index:10;max-width:700px}
-.hero-urgency{display:inline-flex;align-items:center;gap:8px;background:rgba(225,6,0,.1);border:1px solid var(--red-border);padding:8px 18px;margin-bottom:28px;animation:fadeIn .8s var(--ease) both}
-.hero-urgency-dot{width:8px;height:8px;background:var(--red);border-radius:50%;animation:urgencyPulse 1.5s ease infinite}
-.hero-urgency span{font-family:var(--font-display);font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--red)}
+.hero-wrap{display:grid;grid-template-columns:1fr;gap:48px;align-items:center;position:relative;z-index:10;width:100%}
+@media(min-width:1024px){.hero-wrap{grid-template-columns:1.15fr .85fr;gap:60px}}
 
-.hero h1{font-family:var(--font-display);font-size:clamp(42px,7.5vw,88px);font-weight:700;line-height:.95;letter-spacing:1px;text-transform:uppercase;margin-bottom:24px;animation:fadeUp .8s var(--ease) .15s both}
+.hero-content{max-width:640px}
+.hero-urgency{display:inline-flex;align-items:center;gap:8px;background:rgba(225,6,0,.12);border:1px solid var(--red-border);padding:8px 18px;margin-bottom:28px;animation:fadeIn .8s var(--ease) both}
+.hero-urgency-dot{width:8px;height:8px;background:var(--red);border-radius:50%;animation:urgencyPulse 1.5s ease infinite;flex-shrink:0}
+.hero-urgency span{font-family:var(--font-display);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--red)}
+
+.hero h1{font-family:var(--font-display);font-size:clamp(38px,6vw,72px);font-weight:700;line-height:.95;letter-spacing:1px;text-transform:uppercase;margin-bottom:24px;animation:fadeUp .8s var(--ease) .15s both}
 .hero h1 .line{display:block}
 .hero h1 .accent{color:var(--red);position:relative}
 
-.hero-sub{font-family:var(--font-body);font-size:clamp(16px,2vw,20px);font-weight:300;color:var(--white-70);line-height:1.7;max-width:520px;margin-bottom:40px;animation:fadeUp .8s var(--ease) .3s both}
+.hero-sub{font-family:var(--font-body);font-size:clamp(15px,1.6vw,18px);font-weight:300;color:var(--white-90);line-height:1.7;max-width:520px;margin-bottom:36px;animation:fadeUp .8s var(--ease) .3s both}
 .hero-sub strong{color:var(--white);font-weight:500}
 
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap;animation:fadeUp .8s var(--ease) .45s both}
+
+/* Hero visual (right side) */
+.hero-visual{position:relative;display:none;justify-content:center;align-items:center;animation:fadeIn 1s var(--ease) .5s both}
+@media(min-width:1024px){.hero-visual{display:flex}}
+.hero-shield{position:relative;width:100%;max-width:440px;aspect-ratio:1}
+.hero-shield-glow{position:absolute;inset:0;background:radial-gradient(circle at center,rgba(225,6,0,.15),transparent 60%);filter:blur(40px);animation:breathe 4s ease infinite}
+.hero-shield-svg{position:relative;width:100%;height:100%;z-index:2}
+.hero-shield-rings{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1}
+.hero-ring{position:absolute;border:1px solid rgba(225,6,0,.15);border-radius:50%;animation:spin 30s linear infinite}
+.hero-ring.r1{width:100%;height:100%}
+.hero-ring.r2{width:80%;height:80%;animation-duration:25s;animation-direction:reverse;border-color:rgba(225,6,0,.2)}
+.hero-ring.r3{width:55%;height:55%;animation-duration:20s;border-color:rgba(225,6,0,.3)}
+.hero-shield-stat{position:absolute;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);border:1px solid var(--red-border);padding:14px 20px;z-index:5;animation:float 4s ease infinite}
+.hero-shield-stat.s1{top:8%;right:0;animation-delay:0s}
+.hero-shield-stat.s2{bottom:14%;left:-4%;animation-delay:1.5s}
+.hero-shield-stat-num{font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--red);line-height:1}
+.hero-shield-stat-label{font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--white-70);margin-top:2px}
 
 /* Buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--font-display);font-weight:600;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;border:none;transition:all .35s var(--ease);position:relative;overflow:hidden;-webkit-tap-highlight-color:transparent}
@@ -321,7 +348,7 @@ section{padding:96px 0;position:relative}
 .section-label{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:16px}
 .section-label::before{content:'';width:24px;height:1px;background:var(--red)}
 
-.section-heading{font-family:var(--font-display);font-size:clamp(32px,5vw,60px);font-weight:700;line-height:1.05;letter-spacing:1px;text-transform:uppercase;margin-bottom:20px}
+.section-heading{font-family:var(--font-display);font-size:clamp(32px,5vw,60px);font-weight:700;line-height:1.05;letter-spacing:1px;text-transform:uppercase;margin-bottom:20px;color:var(--white)}
 .section-heading .accent{color:var(--red)}
 
 .section-sub{font-size:17px;font-weight:300;color:var(--white-70);max-width:560px;line-height:1.7}
@@ -333,7 +360,7 @@ section{padding:96px 0;position:relative}
 .problem-grid{display:grid;grid-template-columns:1fr;gap:48px;margin-top:48px}
 @media(min-width:768px){.problem-grid{grid-template-columns:1fr 1fr;gap:64px;align-items:center}}
 
-.problem-headline{font-family:var(--font-display);font-size:clamp(26px,4vw,44px);font-weight:700;line-height:1.1;text-transform:uppercase;margin-bottom:20px}
+.problem-headline{font-family:var(--font-display);font-size:clamp(26px,4vw,44px);font-weight:700;line-height:1.1;text-transform:uppercase;margin-bottom:20px;color:var(--white)}
 .problem-headline .accent{color:var(--red)}
 .problem-body{font-size:16px;font-weight:300;color:var(--white-70);line-height:1.8;margin-bottom:32px}
 .problem-body strong{color:var(--white);font-weight:500}
@@ -357,7 +384,7 @@ section{padding:96px 0;position:relative}
    ══════════════════════════════════════════════════════════ */
 .solution{background:var(--black);text-align:center;padding:80px 0}
 .solution-inner{max-width:700px;margin:0 auto}
-.solution h2{font-family:var(--font-display);font-size:clamp(28px,4.5vw,52px);font-weight:700;line-height:1.1;text-transform:uppercase;margin-bottom:20px}
+.solution h2{font-family:var(--font-display);font-size:clamp(28px,4.5vw,52px);font-weight:700;line-height:1.1;text-transform:uppercase;margin-bottom:20px;color:var(--white)}
 .solution h2 .accent{color:var(--red)}
 .solution p{font-size:17px;font-weight:300;color:var(--white-70);line-height:1.7;margin-bottom:32px}
 .solution .btn{margin:0 auto}
@@ -448,7 +475,7 @@ section{padding:96px 0;position:relative}
 .guarantee-box::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(225,6,0,.04),transparent 50%)}
 .guarantee-icon{width:64px;height:64px;border:2px solid var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px}
 .guarantee-icon svg{width:32px;height:32px;fill:var(--red)}
-.guarantee h3{font-family:var(--font-display);font-size:clamp(24px,3.5vw,36px);font-weight:700;text-transform:uppercase;margin-bottom:16px}
+.guarantee h3{font-family:var(--font-display);font-size:clamp(24px,3.5vw,36px);font-weight:700;text-transform:uppercase;margin-bottom:16px;color:var(--white)}
 .guarantee h3 .accent{color:var(--red)}
 .guarantee p{font-size:16px;font-weight:300;color:var(--white-70);line-height:1.7;max-width:500px;margin:0 auto}
 
@@ -482,7 +509,7 @@ section{padding:96px 0;position:relative}
 
 .about-quote-box{background:var(--black-card);border:1px solid var(--white-05);padding:40px 32px;position:relative}
 .about-quote-box::before{content:'\201C';font-family:var(--font-display);font-size:100px;color:var(--red);opacity:.1;position:absolute;top:-16px;left:20px;line-height:1}
-.about-quote{font-family:var(--font-display);font-size:clamp(24px,3.5vw,38px);font-weight:700;line-height:1.15;text-transform:uppercase;margin-bottom:12px}
+.about-quote{font-family:var(--font-display);font-size:clamp(24px,3.5vw,38px);font-weight:700;line-height:1.15;text-transform:uppercase;margin-bottom:12px;color:var(--white)}
 .about-quote .accent{color:var(--red)}
 .about-cite{font-family:var(--font-display);font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--white-50)}
 
@@ -491,7 +518,7 @@ section{padding:96px 0;position:relative}
 .about-stat-num{font-family:var(--font-display);font-size:32px;font-weight:700;color:var(--red);line-height:1}
 .about-stat-label{font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--white-50);margin-top:4px;line-height:1.3}
 
-.about-text h3{font-family:var(--font-display);font-size:clamp(28px,4vw,42px);font-weight:700;line-height:1.1;text-transform:uppercase;margin-bottom:20px}
+.about-text h3{font-family:var(--font-display);font-size:clamp(28px,4vw,42px);font-weight:700;line-height:1.1;text-transform:uppercase;margin-bottom:20px;color:var(--white)}
 .about-text h3 .accent{color:var(--red)}
 .about-text p{font-size:15px;font-weight:300;color:var(--white-70);line-height:1.8;margin-bottom:16px}
 .about-values{display:flex;flex-direction:column;gap:12px;margin-top:24px}
@@ -504,7 +531,7 @@ section{padding:96px 0;position:relative}
    ══════════════════════════════════════════════════════════ */
 .seo-local{background:var(--black-rich)}
 .seo-local-inner{max-width:800px;margin:0 auto;text-align:center}
-.seo-local h2{font-family:var(--font-display);font-size:clamp(28px,4vw,44px);font-weight:700;text-transform:uppercase;margin-bottom:24px}
+.seo-local h2{font-family:var(--font-display);font-size:clamp(28px,4vw,44px);font-weight:700;text-transform:uppercase;margin-bottom:24px;color:var(--white)}
 .seo-local h2 .accent{color:var(--red)}
 .seo-local p{font-size:16px;font-weight:300;color:var(--white-70);line-height:1.8;margin-bottom:16px}
 .seo-regions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:28px}
@@ -522,7 +549,7 @@ section{padding:96px 0;position:relative}
 .cta-final{background:var(--black);padding:120px 0;text-align:center;position:relative;overflow:hidden}
 .cta-final::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at center,rgba(225,6,0,.06),transparent)}
 .cta-content{position:relative;z-index:2;max-width:650px;margin:0 auto}
-.cta-final h2{font-family:var(--font-display);font-size:clamp(36px,6vw,64px);font-weight:700;line-height:1.05;text-transform:uppercase;margin-bottom:20px}
+.cta-final h2{font-family:var(--font-display);font-size:clamp(36px,6vw,64px);font-weight:700;line-height:1.05;text-transform:uppercase;margin-bottom:20px;color:var(--white)}
 .cta-final h2 .accent{color:var(--red)}
 .cta-final p{font-size:17px;font-weight:300;color:var(--white-70);line-height:1.7;margin-bottom:12px;max-width:480px;margin-left:auto;margin-right:auto}
 .cta-offer{display:inline-flex;align-items:center;gap:8px;background:var(--red-subtle);border:1px solid var(--red-border);padding:8px 20px;margin-bottom:32px;font-family:var(--font-display);font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--red)}
@@ -595,8 +622,9 @@ section{padding:96px 0;position:relative}
 /* ══════════════════════════════════════════════════════════
    URGENCY BAR
    ══════════════════════════════════════════════════════════ */
-.urgency-bar{background:var(--red);padding:10px 16px;text-align:center;font-family:var(--font-display);font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--white);position:relative;z-index:999;display:flex;align-items:center;justify-content:center;gap:8px}
-.urgency-bar svg{width:16px;height:16px;fill:var(--white);animation:urgencyPulse 2s ease infinite}
+.urgency-bar{background:var(--red);padding:9px 16px;text-align:center;font-family:var(--font-display);font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--white);position:fixed;top:0;left:0;width:100%;z-index:1002;display:flex;align-items:center;justify-content:center;gap:8px}
+.urgency-bar svg{width:14px;height:14px;fill:var(--white);animation:urgencyPulse 2s ease infinite;flex-shrink:0}
+@media(max-width:640px){.urgency-bar{font-size:10px;letter-spacing:1px;padding:7px 12px}.urgency-bar svg{width:12px;height:12px}}
 
 </style>
 </head>
@@ -612,7 +640,8 @@ section{padding:96px 0;position:relative}
 <header class="header" id="header">
   <div class="container header-inner">
     <a href="#inicio" class="header-logo" aria-label="Dieff Detailing - Início">
-      <img src="logo-dieff-detailing.png" alt="Dieff Detailing - Estética Automotiva em Araucária e Curitiba" width="943" height="854" loading="eager">
+      <img src="logo-dieff-detailing.png" alt="Dieff Detailing - Estética Automotiva em Araucária e Curitiba" width="400" height="363" loading="eager">
+      <div class="header-logo-text"><strong>Dieff</strong><span>Detailing</span></div>
     </a>
     <nav class="nav-desktop" aria-label="Menu principal">
       <a href="#inicio">Início</a>
@@ -651,39 +680,84 @@ section{padding:96px 0;position:relative}
     <div class="hero-grid"></div>
   </div>
   <div class="container">
-    <div class="hero-content">
-      <div class="hero-urgency">
-        <div class="hero-urgency-dot"></div>
-        <span>Agenda da semana quase completa</span>
-      </div>
-      <h1>
-        <span class="line">Seu carro parece</span>
-        <span class="line"><span class="accent">velho</span>… mesmo</span>
-        <span class="line">depois de <span class="accent">lavar?</span></span>
-      </h1>
-      <p class="hero-sub">Com <strong>polimento técnico e vitrificação cerâmica</strong>, ele volta a ter brilho de carro novo. Atendemos Araucária, CIC, Novo Mundo, Portão, Capão Raso e Pinheirinho.</p>
-      <div class="hero-actions">
-        <a href="https://wa.me/5541999999999?text=Olá! Quero uma avaliação gratuita para meu veículo." target="_blank" rel="noopener noreferrer" class="btn btn-red btn-lg">
-          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Solicitar avaliação gratuita
-        </a>
-        <a href="#resultados" class="btn btn-outline btn-lg">
-          <svg viewBox="0 0 24 24" style="fill:currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-          Ver transformações
-        </a>
-      </div>
-      <div class="hero-trust">
-        <div class="hero-trust-item">
-          <div class="hero-trust-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
-          <div class="hero-trust-text"><strong>Avaliação gratuita</strong>Sem compromisso</div>
+    <div class="hero-wrap">
+      <div class="hero-content">
+        <div class="hero-urgency">
+          <div class="hero-urgency-dot"></div>
+          <span>Agenda da semana quase completa</span>
         </div>
-        <div class="hero-trust-item">
-          <div class="hero-trust-icon"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
-          <div class="hero-trust-text"><strong>5 estrelas</strong>+47 avaliações</div>
+        <h1>
+          <span class="line">Seu carro parece</span>
+          <span class="line"><span class="accent">velho</span>… mesmo</span>
+          <span class="line">depois de <span class="accent">lavar?</span></span>
+        </h1>
+        <p class="hero-sub">Com <strong>polimento técnico e vitrificação cerâmica</strong>, ele volta a ter brilho de carro novo. Atendemos Araucária, CIC, Novo Mundo, Portão, Capão Raso e Pinheirinho.</p>
+        <div class="hero-actions">
+          <a href="https://wa.me/5541999999999?text=Olá! Quero uma avaliação gratuita para meu veículo." target="_blank" rel="noopener noreferrer" class="btn btn-red btn-lg">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Solicitar avaliação gratuita
+          </a>
+          <a href="#resultados" class="btn btn-outline btn-lg">
+            <svg viewBox="0 0 24 24" style="fill:currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            Ver transformações
+          </a>
         </div>
-        <div class="hero-trust-item">
-          <div class="hero-trust-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
-          <div class="hero-trust-text"><strong>Araucária e Curitiba</strong>Atendimento local</div>
+        <div class="hero-trust">
+          <div class="hero-trust-item">
+            <div class="hero-trust-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
+            <div class="hero-trust-text"><strong>Avaliação gratuita</strong>Sem compromisso</div>
+          </div>
+          <div class="hero-trust-item">
+            <div class="hero-trust-icon"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+            <div class="hero-trust-text"><strong>5 estrelas</strong>+47 avaliações</div>
+          </div>
+          <div class="hero-trust-item">
+            <div class="hero-trust-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+            <div class="hero-trust-text"><strong>Araucária e Curitiba</strong>Atendimento local</div>
+          </div>
+        </div>
+      </div>
+      <!-- Hero visual: animated shield with rings + floating stats -->
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-shield">
+          <div class="hero-shield-glow"></div>
+          <div class="hero-shield-rings">
+            <div class="hero-ring r1"></div>
+            <div class="hero-ring r2"></div>
+            <div class="hero-ring r3"></div>
+          </div>
+          <svg class="hero-shield-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#E10600" stop-opacity="0.9"/>
+                <stop offset="100%" stop-color="#7A0300" stop-opacity="0.4"/>
+              </linearGradient>
+              <filter id="shieldGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="4" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <!-- Shield outline -->
+            <path d="M100 25 L155 50 L155 105 Q155 145 100 175 Q45 145 45 105 L45 50 Z" fill="url(#shieldGrad)" opacity="0.18" filter="url(#shieldGlow)"/>
+            <path d="M100 25 L155 50 L155 105 Q155 145 100 175 Q45 145 45 105 L45 50 Z" fill="none" stroke="#E10600" stroke-width="2" opacity="0.85"/>
+            <!-- Inner shield -->
+            <path d="M100 45 L138 63 L138 103 Q138 132 100 153 Q62 132 62 103 L62 63 Z" fill="none" stroke="#E10600" stroke-width="1" opacity="0.5"/>
+            <!-- Center checkmark -->
+            <path d="M80 100 L94 114 L122 86" fill="none" stroke="#FFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Sparkles -->
+            <circle cx="60" cy="60" r="2" fill="#FFF" opacity="0.8"/>
+            <circle cx="145" cy="80" r="1.5" fill="#FFF" opacity="0.6"/>
+            <circle cx="55" cy="125" r="1.5" fill="#FFF" opacity="0.5"/>
+            <circle cx="150" cy="135" r="2" fill="#E10600" opacity="0.8"/>
+          </svg>
+          <div class="hero-shield-stat s1">
+            <div class="hero-shield-stat-num">5<span style="font-size:14px">★</span></div>
+            <div class="hero-shield-stat-label">Avaliação<br>premium</div>
+          </div>
+          <div class="hero-shield-stat s2">
+            <div class="hero-shield-stat-num">+500</div>
+            <div class="hero-shield-stat-label">Carros<br>atendidos</div>
+          </div>
         </div>
       </div>
     </div>
@@ -738,10 +812,10 @@ section{padding:96px 0;position:relative}
         </div>
       </div>
       <div class="problem-visual reveal-right">
-        <div class="stat-card big">
-          <div class="stat-number" data-count="90">0%</div>
-          <div class="stat-label">dos carros perdem brilho<br>nos primeiros 2 anos</div>
-        </div>
+          <div class="stat-card big">
+            <div class="stat-number" data-count="90" data-suffix="%">0%</div>
+            <div class="stat-label">dos carros perdem brilho<br>nos primeiros 2 anos</div>
+          </div>
         <div class="stat-card">
           <div class="stat-number">UV</div>
           <div class="stat-label">Dano solar<br>constante</div>
@@ -1174,33 +1248,49 @@ document.querySelectorAll('.nav-m-link').forEach(function(l){
 
 /* === Scroll reveal === */
 var revealEls=document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale');
-var revealObserver=new IntersectionObserver(function(entries){
-  entries.forEach(function(entry){
-    if(entry.isIntersecting){entry.target.classList.add('active');revealObserver.unobserve(entry.target);}
-  });
-},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
-revealEls.forEach(function(el){revealObserver.observe(el)});
+if('IntersectionObserver' in window){
+  var revealObserver=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){entry.target.classList.add('active');revealObserver.unobserve(entry.target);}
+    });
+  },{threshold:0.05,rootMargin:'0px 0px -10% 0px'});
+  revealEls.forEach(function(el){revealObserver.observe(el)});
+  /* Fallback: ensure everything is shown after 4 seconds even if observer fails */
+  setTimeout(function(){
+    revealEls.forEach(function(el){if(!el.classList.contains('active'))el.classList.add('active')});
+  },4000);
+}else{
+  revealEls.forEach(function(el){el.classList.add('active')});
+}
 
-/* === Counter animation === */
-var countersDone=false;
+/* === Counter animation (per-element, with suffix support) === */
+function animateCounter(el){
+  if(el.dataset.counted)return;
+  el.dataset.counted='1';
+  var target=parseInt(el.getAttribute('data-count'),10);
+  var suffix=el.getAttribute('data-suffix')||'+';
+  var duration=1500;
+  var start=performance.now();
+  function tick(now){
+    var p=Math.min((now-start)/duration,1);
+    var eased=1-Math.pow(1-p,3);
+    var current=Math.floor(eased*target);
+    el.textContent=current+suffix;
+    if(p<1)requestAnimationFrame(tick);
+    else el.textContent=target+suffix;
+  }
+  requestAnimationFrame(tick);
+}
 var counterEls=document.querySelectorAll('[data-count]');
 var counterObserver=new IntersectionObserver(function(entries){
   entries.forEach(function(entry){
-    if(entry.isIntersecting&&!countersDone){
-      countersDone=true;
-      counterEls.forEach(function(el){
-        var target=parseInt(el.getAttribute('data-count'));
-        var current=0;var inc=Math.ceil(target/50);
-        var timer=setInterval(function(){
-          current+=inc;if(current>=target){current=target;clearInterval(timer);}
-          el.textContent=current+'+';
-        },30);
-      });
-      counterObserver.disconnect();
+    if(entry.isIntersecting){
+      animateCounter(entry.target);
+      counterObserver.unobserve(entry.target);
     }
   });
-},{threshold:0.3});
-if(counterEls.length)counterObserver.observe(counterEls[0]);
+},{threshold:0.4,rootMargin:'0px 0px -20px 0px'});
+counterEls.forEach(function(el){counterObserver.observe(el)});
 
 /* === Active nav highlight === */
 var sections=document.querySelectorAll('section[id]');
